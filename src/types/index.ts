@@ -47,3 +47,11 @@ export interface GsheetsReadResponse {
   values: string[][];
   [key: string]: unknown;
 }
+
+export interface GsheetsWriteParams {
+  spreadsheetId: string;
+  range: string;
+  values: {
+    [key: string]: any;
+  };
+}

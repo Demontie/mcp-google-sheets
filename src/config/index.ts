@@ -35,6 +35,10 @@ export const TOOL_CONFIG = {
     name: "gsheets_read",
     description: "Read data from a Google Sheet.",
   },
+  gsheets_write: {
+    name: "gsheets_write",
+    description: "Write data to a Google Sheet.",
+  },
 };
 
 export const SERVER_CONFIG = {
