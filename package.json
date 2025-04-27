@@ -1,0 +1,21 @@
+{
+  "name": "mcp-google-sheets",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "node --no-warnings src/index.ts",
+    "dev": "node --inspect --watch src/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.5.0",
+    "googleapis": "^148.0.0",
+    "zod": "^3.22.4"
+  },
+  "keywords": [],
+  "author": "Demontie Costa",
+  "license": "ISC",
+  "description": "A script to sync data from Google Sheets to a ModelContextProtocol",
+  "devDependencies": {
+    "@types/node": "^22.15.2"
+  }
+}
