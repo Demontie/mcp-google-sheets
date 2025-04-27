@@ -120,9 +120,9 @@ To configure this MCP server with Cursor:
 
 ## Demo
 
-<video controls>
-  <source src="./.github/demo.mp4" type="video/mp4" />
-</video>
+<p align="center">
+  <img src="./.github/demo.gif" />
+</p>
 
 ## License
 
