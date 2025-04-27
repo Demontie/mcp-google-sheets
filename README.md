@@ -7,6 +7,7 @@ This project provides a Model Context Protocol (MCP) server that enables reading
 - [Features](#features)
 - [Installation and Usage](#installation-and-usage)
 - [Cursor Configuration](#cursor-configuration)
+- [Demo](#demo)
 - [License](#license)
 
 ## Features
@@ -116,6 +117,12 @@ To configure this MCP server with Cursor:
   }
 }
 ```
+
+## Demo
+
+<video controls>
+  <source src="./.github/demo.mp4" type="video/mp4" />
+</video>
 
 ## License
 
