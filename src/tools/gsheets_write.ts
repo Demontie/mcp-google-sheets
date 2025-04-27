@@ -2,7 +2,6 @@ import { z } from "zod";
 import { getAuthSheets } from "../config/index.ts";
 import * as types from "../types/index.ts";
 import { InteractiveHandler } from "./interactive_handler.ts";
-import { CurrencyStandardization } from "currency-format-utils";
 
 const schema = {
   spreadsheetId: z.string().describe("The ID of the spreadsheet to read."),
@@ -17,6 +16,21 @@ const schema = {
     .optional()
     .default("Página1"),
 };
+
+function normalizeCurrency(value: string): string {
+  let cleanValue = value.replace(/[^\d,.]/g, "");
+  cleanValue = cleanValue.replace(/\./g, ",").replace(/,+/g, ",");
+  cleanValue = cleanValue.replace(/^,|,$/g, "");
+  const parts = cleanValue.split(",");
+  let result = parts[0] || "0";
+  if (parts[1]) {
+    result += "," + parts[1].slice(0, 2);
+  } else {
+    result += ",00";
+  }
+
+  return result;
+}
 
 export const gsheetsWriteTool = {
   name: "gsheets_write",
@@ -35,21 +49,14 @@ export const gsheetsWriteTool = {
 
     const { spreadsheetId, range, values } = params;
     const { googleSheets } = await getAuthSheets();
-    const formattedValue = CurrencyStandardization.currencyCode({
-      code: "BRL",
-      value: Number(values.value),
-    });
+
     const response = await googleSheets.spreadsheets.values.append({
       spreadsheetId,
       range,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [
-          [
-            values.product,
-            formattedValue.getValueFormated(),
-            new Date(values.date).toLocaleDateString(),
-          ],
+          [values.product, normalizeCurrency(values.value), values.date],
         ],
       },
     });

@@ -1,8 +1,13 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import {
+  McpServer,
+  ResourceTemplate,
+} from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { SERVER_CONFIG } from "./config/index.ts";
 import { gsheetsReadTool } from "./tools/gsheets_read.ts";
 import { gsheetsWriteTool } from "./tools/gsheets_write.ts";
+import { z } from "zod";
+
 async function initServer() {
   const server = new McpServer({
     name: SERVER_CONFIG.name,
