@@ -2,6 +2,7 @@
   "name": "mcp-google-sheets",
   "version": "1.0.0",
   "main": "src/index.ts",
+  "type": "module",
   "scripts": {
     "start": "node --no-warnings src/index.ts",
     "dev": "node --inspect --watch src/index.ts"
